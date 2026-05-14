@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact – Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Guides&display=swap">
+    <link rel="stylesheet" href="css/style_new.css">
+</head>
+<body>
+
+    <header>
+        <h1>Haylee Milton</h1>
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <input id="menu1-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu1">
+                        <li class="menu1__item">
+                            <a href="#">Prints</a>
+                            <label for="menu1-dropdown"></label>
+                        </li>
+                        <li class="menu1__dropdown">
+                            <div>
+                                <a href="screen-prints.html">Screen Prints</a>
+                                <a href="relief.html">Relief</a>
+                                <a href="risography.html">Risography</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input id="menu2-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu2">
+                        <li class="menu2__item">
+                            <a href="#">Illustrations</a>
+                            <label for="menu2-dropdown"></label>
+                        </li>
+                        <li class="menu2__dropdown">
+                            <div>
+                                <a href="paintings.html">Paintings</a>
+                                <a href="comics.html">Comics</a>
+                                <a href="figure-drawings.html">Figure Drawings</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input id="menu3-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu3">
+                        <li class="menu3__item">
+                            <a href="#">Animations</a>
+                            <label for="menu3-dropdown"></label>
+                        </li>
+                        <li class="menu3__dropdown">
+                            <div>
+                                <a href="animatics.html">Animatics</a>
+                                <a href="storyboards.html">Storyboards</a>
+                                <a href="character-sheets.html">Character Sheets</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="page-wrapper">
+    <h2>Contact</h2>
+    <div class="contact">
+        <div class="contact__inner">
+            <div class="contact__info">
+                <p>Feel free to reach out!</p>
+                <p>Email: <a href="mailto:hmilto@artic.edu">hmilto@artic.edu</a></p>
+                <p>Instagram: <a href="https://www.instagram.com/byhayleex/">@byhayleex</a></p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/haylee-milton-53b903349/">Haylee Milton</a></p>
+            </div>
+
+            <button class="bingus-btn" id="bingus-btn">
+                <img src="images/bingus.webp" alt="Bingus">
+                <p class="bingus-caption">click me!</p>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('bingus-btn').addEventListener('click', function(e) {
+        const emojis = ['❤️', '🩷', '💕', '💗', '💖', '💝', '🩶'];
+        const count = 8;
+
+        for (let i = 0; i < count; i++) {
+            setTimeout(() => {
+                const heart = document.createElement('span');
+                heart.classList.add('heart');
+                heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+                // scatter hearts randomly around the click point
+                heart.style.left = (e.clientX + (Math.random() - 0.5) * 100) + 'px';
+                heart.style.top  = (e.clientY + (Math.random() - 0.5) * 60) + 'px';
+
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1200);
+            }, i * 60);
+        }
+    });
+</script>
+    <!-- <footer>Footer information goes in here.</footer> -->
+</body>
+</html>

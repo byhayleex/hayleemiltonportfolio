@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posters – Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Guides&display=swap">
+    <link rel="stylesheet" href="css/style_new.css">
+</head>
+<body>
+
+    <header>
+        <h1>Haylee Milton</h1>
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <input id="menu1-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu1">
+                        <li class="menu1__item">
+                            <a href="#">Prints</a>
+                            <label for="menu1-dropdown"></label>
+                        </li>
+                        <li class="menu1__dropdown">
+                            <div>
+                                <a href="screen-prints.html">Screen Prints</a>
+                                <a href="relief.html">Relief</a>
+                                <a href="risography.html">Risography</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input id="menu2-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu2">
+                        <li class="menu2__item">
+                            <a href="#">Illustrations</a>
+                            <label for="menu2-dropdown"></label>
+                        </li>
+                        <li class="menu2__dropdown">
+                            <div>
+                                <a href="paintings.html">Paintings</a>
+                                <a href="comics.html">Comics</a>
+                                <a href="figure-drawings.html">Figure Drawings</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input id="menu3-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu3">
+                        <li class="menu3__item">
+                            <a href="#">Animations</a>
+                            <label for="menu3-dropdown"></label>
+                        </li>
+                        <li class="menu3__dropdown">
+                            <div>
+                                <a href="animatics.html">Animatics</a>
+                                <a href="storyboards.html">Storyboards</a>
+                                <a href="character-sheets.html">Character Sheets</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <h2>Figure Drawings</h2>
+        <div class="prints__grid">
+            <figure class="prints__item">
+                <img src="images/illustrations/Figures!_2024.jpg" alt="Posters 1">
+                <figcaption>Figures! (2025)</figcaption>
+            </figure>
+            <figure class="prints__item">
+                <img src="images/illustrations/around_2025.jpg" alt="Posters 2">
+                <figcaption>Around (2025)</figcaption>
+            </figure>
+            <figure class="prints__item">
+                <img src="images/illustrations/resting_2025.jpg" alt="Posters 3">
+                <figcaption>Resting (2025)</figcaption>
+            </figure>
+            <figure class="prints__item">
+                <img src="images/illustrations/blue_2025.jpg" alt="Posters 3">
+                <figcaption>Blue (2025)</figcaption>
+            </figure>
+                        <figure class="prints__item">
+                <img src="images/illustrations/laying_2025.jpg" alt="Posters 3">
+                <figcaption>Laying (2025)</figcaption>
+            </figure>
+                        <figure class="prints__item">
+                <img src="images/illustrations/pas_de_chat_2025.png" alt="Posters 3">
+                <figcaption>Pas De Chat (2025)</figcaption>
+            </figure>
+        </div>
+    </div>
+    <!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox__close" id="lightbox-close">&times;</button>
+    <img class="lightbox__img" id="lightbox-img" src="" alt="">
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+</div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.getElementById('lightbox-close');
+
+        // open lightbox when any gallery image is clicked
+        document.querySelectorAll('.prints__item img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxCaption.textContent = img.closest('figure').querySelector('figcaption').textContent;
+                lightbox.classList.add('active');
+            });
+        });
+
+        // close on X button or clicking outside the image
+        lightboxClose.addEventListener('click', () => lightbox.classList.remove('active'));
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) lightbox.classList.remove('active');
+        });
+
+        // close with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') lightbox.classList.remove('active');
+        });
+    </script>
+</body>
+</html>

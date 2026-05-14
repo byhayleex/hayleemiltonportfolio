@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About – Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Guides&display=swap">
+    <link rel="stylesheet" href="css/style_new.css">
+</head>
+<body>
+
+    <header>
+        <h1>Haylee Milton</h1>
+        <nav>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <input id="menu1-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu1">
+                        <li class="menu1__item">
+                            <a href="#">Prints</a>
+                            <label for="menu1-dropdown"></label>
+                        </li>
+                        <li class="menu1__dropdown">
+                            <div>
+                                <a href="screen-prints.html">Screen Prints</a>
+                                <a href="relief.html">Relief</a>
+                                <a href="risography.html">Risography</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input id="menu2-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu2">
+                        <li class="menu2__item">
+                            <a href="#">Illustrations</a>
+                            <label for="menu2-dropdown"></label>
+                        </li>
+                        <li class="menu2__dropdown">
+                            <div>
+                                <a href="paintings.html">Paintings</a>
+                                <a href="comics.html">Comics</a>
+                                <a href="figure-drawings.html">Figure Drawings</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <input id="menu3-dropdown" type="checkbox" class="dropdown-control">
+                    <ul class="menu3">
+                        <li class="menu3__item">
+                            <a href="#">Animations</a>
+                            <label for="menu3-dropdown"></label>
+                        </li>
+                        <li class="menu3__dropdown">
+                            <div>
+                                <a href="animatics.html">Animatics</a>
+                                <a href="storyboards.html">Storyboards</a>
+                                <a href="character-sheets.html">Character Sheets</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-wrapper">
+        <section class="about">
+            <figure class="about__photo">
+                <img src="images/about/profile.JPG" alt="Haylee Milton">
+            </figure>
+            <div class="about__text">
+                <h2>About</h2>
+                <p>Hi! I'm Haylee </p>
+                <p>⊹₊˚‧︵‿₊୨ᰔ୧₊‿︵‧˚₊⊹</p>
+                <p>I am an illustrator, designer, and printmaker currently in Chicago, IL.</p>
+                <div class="about__contact">
+                    <p><a href="mailto:hmilto@artic.edu">hmilto@artic.edu</a></p>
+                    <p><a href="https://www.instagram.com/byhayleex/">@byhayleex</a></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+<div class="doodle">
+    <p class="doodle__label">doodle here! ✏️</p>
+    <canvas id="doodle-canvas" class="doodle__canvas"></canvas>
+    <div class="doodle__controls">
+        <input type="color" id="doodle-color" value="#c8aab0" title="pick a color">
+        <input type="range" id="doodle-size" min="1" max="20" value="4" title="brush size">
+        <button id="doodle-clear">clear ✕</button>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('doodle-canvas');
+    const ctx = canvas.getContext('2d');
+    const colorPicker = document.getElementById('doodle-color');
+    const sizePicker = document.getElementById('doodle-size');
+    const clearBtn = document.getElementById('doodle-clear');
+
+    // set canvas size
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    let drawing = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        if (e.touches) {
+            return {
+                x: e.touches[0].clientX - rect.left,
+                y: e.touches[0].clientY - rect.top
+            };
+        }
+        return {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        };
+    }
+
+    function startDraw(e) {
+        drawing = true;
+        const pos = getPos(e);
+        lastX = pos.x;
+        lastY = pos.y;
+    }
+
+    function draw(e) {
+        if (!drawing) return;
+        e.preventDefault();
+        const pos = getPos(e);
+
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.strokeStyle = colorPicker.value;
+        ctx.lineWidth = sizePicker.value;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.stroke();
+
+        lastX = pos.x;
+        lastY = pos.y;
+    }
+
+    function stopDraw() { drawing = false; }
+
+    // mouse events
+    canvas.addEventListener('mousedown', startDraw);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDraw);
+    canvas.addEventListener('mouseleave', stopDraw);
+
+    // touch events (mobile)
+    canvas.addEventListener('touchstart', startDraw);
+    canvas.addEventListener('touchmove', draw, { passive: false });
+    canvas.addEventListener('touchend', stopDraw);
+
+    // clear button
+    clearBtn.addEventListener('click', () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+</script>
+
+    
+</body>
+</html>

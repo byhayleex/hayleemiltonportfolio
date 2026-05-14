@@ -1,0 +1,804 @@
+/*
+Updated: 26.05.09 */
+
+/*
+Global
+============================================= */
+/* Header
+============================================= */
+header {
+    background-color: rgb(220 171 175);
+    color: white;
+    padding: 2.5rem 1rem;
+    align-items: center;
+    border-bottom: 2px dashed rgb(255 255 255 / 0.4);
+}
+
+h1 {
+    font: normal 600 100px/1.3 "Playwrite NZ Guides", cursive;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.2rem;
+}
+
+/* Navigation
+============================================= */
+nav > ul {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    list-style: none;
+    padding: 3px;
+    letter-spacing: 0.12em;
+    font-size: 15px;
+}
+
+/* Typography
+============================================= */
+body {
+    background-color: rgb(255 250 227);
+    background-image: url('../images/home/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    text-align: center;
+    font: normal 350 17px/1.6 'Saira', sans-serif; /* bumped from 15px */
+    cursor: url('../images/your-cursor.png'), auto;
+}
+
+h2 {
+    font: normal 400 38px/1.5 "Playwrite NZ Guides", cursive;
+    margin-bottom: 24px;
+}
+
+h2::after {
+    content: " ✿";
+    font-size: 24px;
+    opacity: 0.6;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    color: #aaa;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 14px;
+}
+
+/* Page wrapper
+============================================= */
+.page-wrapper {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 50px;
+    background: rgb(255 255 255 / 0.5);
+    border-radius: 24px;
+    backdrop-filter: blur(4px);
+}
+
+/* Nav links — rounder hover pill effect
+============================================= */
+nav > ul > li > a,
+nav > ul > li > ul > li > a {
+    padding: 6px 14px;
+    border-radius: 20px;
+    transition: background 0.3s ease, background-size 0.3s ease;
+}
+
+nav > ul > li > a:hover {
+    background: rgb(255 255 255 / 0.2);
+}
+
+/* Dropdown links — rounded on hover
+============================================= */
+.menu1__dropdown a,
+.menu2__dropdown a,
+.menu3__dropdown a {
+    color: black;
+    display: block;
+    padding: 6px 10px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: bottom center;
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+}
+
+.menu1__dropdown a:hover,
+.menu2__dropdown a:hover,
+.menu3__dropdown a:hover {
+    background-color: rgb(220 171 175 / 0.15);
+    background-size: 100% 1px;
+}
+
+/* Dropdown panel — rounder
+============================================= */
+.menu1__dropdown,
+.menu2__dropdown,
+.menu3__dropdown {
+    background-color: white;
+    color: black;
+    width: 140px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.08);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: 0.35s ease;
+    cursor: pointer;
+}
+
+/* Figcaption typography
+============================================= */
+.prints__item figcaption,
+.scroll__column .prints__item figcaption,
+.video__item figcaption {
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    margin-top: 10px;
+    color: #888;
+}
+
+/* Contact page
+============================================= */
+.contact {
+    text-align: center;
+    line-height: 2.5;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+}
+/* About section: two-column layout */
+.about {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.about__photo img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+}
+
+.about__text {
+    flex: 1;
+}
+
+.about__text h2 {
+    margin-bottom: 8px;
+}
+
+.about__text h3 {
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: #888;
+}
+
+.about__text p {
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.about__contact {
+    margin-top: 30px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.about__contact a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 650px) {
+    .about {
+        flex-direction: column;
+    }
+
+    .about__photo img {
+        max-width: 100%;
+    }
+}
+header {
+    background-color: rgb(220 171 175);
+    color: white;
+    padding: 1rem;
+    align-items: center;
+}
+
+h2 {
+    font: normal 400 30px/1.5 "Playwrite NZ Guides", cursive;
+}
+
+/*
+Homepage Hero Image
+============================================= */
+/*
+you'll need to set up the pre-hover figcaption rule */
+figcaption {
+    opacity: 0;
+    transition: 0.35s ease;
+    margin-top: 10px;
+}
+/*
+style the hover event */
+/* .bingus:hover figcaption {
+    background-color: rgb(? ? ? / ?); /* choose a color to transition */
+    /* opacity: 1; /* transition the figcaption's opacity
+} */
+
+/*
+Navigation
+============================================= */
+nav > ul {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+    list-style: none;
+    padding: 3px;
+}
+
+/*
+Dropdowns
+============================================= */
+/* Checkbox */
+.dropdown-control {
+    display: none;
+}
+
+.menu1,
+.menu2,
+.menu3 {
+    list-style: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.menu1__item,
+.menu2__item,
+.menu3__item {
+    position: relative;
+    cursor: pointer;
+}
+
+.menu1__dropdown,
+.menu2__dropdown,
+.menu3__dropdown {
+    background-color: white;
+    color: black;
+    width: 140px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgb(0 0 0 / 0.08);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: 0.35s ease;
+    cursor: pointer;
+    z-index: 100; /* add this line */
+}
+
+.menu1__dropdown > div,
+.menu2__dropdown > div,
+.menu3__dropdown > div {
+    overflow-y: hidden;
+}
+
+li:hover .menu1__dropdown,
+li:hover .menu2__dropdown,
+li:hover .menu3__dropdown {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.menu1 label,
+.menu2 label,
+.menu3 label {
+    position: absolute;
+    inset: 0;
+}
+
+/*
+Links
+============================================= */
+nav a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 5px;
+}
+
+.menu1__dropdown a,
+.menu2__dropdown a,
+.menu3__dropdown a {
+    color: black;
+    display: block;
+}
+
+/*
+Footer
+============================================= */
+/* footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+} */
+
+/* Prints / Gallery Grid
+============================================= */
+.prints__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.prints__item {
+    margin: 0;
+}
+
+.prints__item img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+.prints__item:hover img {
+    opacity: 0.85;
+}
+
+.prints__item figcaption {
+    opacity: 1;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Contact Page
+============================================= */
+.contact {
+    text-align: center;
+    line-height: 2.5;
+    font-size: 20px;
+}
+
+.contact a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+/* Bingus
+============================================= */
+.bingus-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.bingus-btn img {
+    width: 200px;
+    height: auto;
+    transition: transform 0.2s ease;
+}
+
+.bingus-btn:hover img {
+    transform: scale(1.05);
+}
+
+.bingus-caption {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #888;
+    font-style: italic;
+}
+
+.heart {
+    position: fixed;
+    font-size: 28px;
+    pointer-events: none;
+    animation: floatUp 1.2s ease forwards;
+    z-index: 999;
+}
+
+@keyframes floatUp {
+    0%   { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-160px) scale(1.4); }
+}
+
+.contact__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+/* Responsive
+============================================= */
+@media (max-width: 700px) {
+    .prints__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 420px) {
+    .prints__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Video Grid
+============================================= */
+.video__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.video__item {
+    margin: 0;
+}
+
+.video__item video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.video__item figcaption {
+    opacity: 1;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Storyboards Grid
+============================================= */
+.storyboards__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for 2 images */
+    gap: 24px;
+    margin-top: 30px;
+    max-width: 700px;   /* stops it stretching too wide */
+    margin-left: auto;  /* centers the grid */
+    margin-right: auto;
+}
+
+/* Character Sheets Grid
+============================================= */
+.character__grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 6-column base */
+    gap: 24px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+/* top row: each of the 3 spans 2 of the 6 columns */
+.character__grid .prints__item {
+    grid-column: span 2;
+}
+
+/* bottom 2: each spans 3 columns, naturally centering them */
+.character__item--centered {
+    grid-column: span 3;
+}
+
+/* Scroll Column (Screen Prints, Relief, Risography, Comics)
+============================================= */
+.scroll__column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-top: 30px;
+}
+
+.scroll__column .prints__item {
+    width: 100%;
+    max-width: 700px; /* adjust to taste */
+}
+
+.scroll__column .prints__item img {
+    width: 100%;
+    height: auto; /* shows the full image, no cropping */
+    display: block;
+}
+
+.scroll__column .prints__item figcaption {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Hover Zoom
+============================================= */
+.prints__item img,
+.scroll__column .prints__item img,
+.video__item img {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.prints__item:hover img,
+.scroll__column .prints__item:hover img {
+    transform: scale(1.04);
+}
+
+/* Lightbox Overlay
+============================================= */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0 0 0 / 0.85);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox__img {
+    max-width: 90vw;
+    max-height: 75vh;
+    object-fit: contain;
+    display: block;
+}
+
+.lightbox__caption {
+    color: white;
+    margin-top: 16px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.lightbox__close {
+    position: fixed;
+    top: 20px;
+    right: 28px;
+    color: white;
+    font-size: 36px;
+    cursor: pointer;
+    line-height: 1;
+    background: none;
+    border: none;
+}
+/* PDF Lightbox
+============================================= */
+.lightbox__pdf {
+    display: none;
+    width: 90vw;
+    height: 80vh;
+    border: none;
+}
+
+/* NAV UNDERLINES */
+.menu1 label,
+.menu2 label,
+.menu3 label {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: bottom center;
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+}
+
+.menu1 label:hover,
+.menu2 label:hover,
+.menu3 label:hover {
+    background-size: 100% 1px;
+}
+
+.menu1__dropdown a,
+.menu2__dropdown a,
+.menu3__dropdown a {
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: bottom center;
+    background-size: 0% 1px;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+    display: block;
+}
+
+.menu1__dropdown a:hover,
+.menu2__dropdown a:hover,
+.menu3__dropdown a:hover {
+    background-size: 100% 1px;
+}
+
+/* Kaomoji Side Decorations
+============================================= */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='80' viewBox='0 0 40 80'%3E%3Ctext x='50%25' y='20' text-anchor='middle' font-size='16' fill='%23c8aab0'%3E✿%3C/text%3E%3Ctext x='50%25' y='40' text-anchor='middle' font-size='10' fill='%23c8aab0'%3E⋆%3C/text%3E%3Ctext x='50%25' y='58' text-anchor='middle' font-size='14' fill='%23c8aab0'%3E❀%3C/text%3E%3Ctext x='50%25' y='75' text-anchor='middle' font-size='10' fill='%23c8aab0'%3E✦%3C/text%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    background-position: center;
+}
+
+body::before {
+    left: 0;
+}
+
+body::after {
+    right: 0;
+}
+/* Header glow-up
+============================================= */
+header {
+    background-color: rgb(220 171 175);
+    color: white;
+    padding: 2.5rem 1rem;
+    align-items: center;
+    border-bottom: 2px dashed rgb(255 255 255 / 0.4);
+    position: relative; /* add this */
+    z-index: 100;       /* add this */
+}
+
+h1 {
+    font-size: 22px;
+    letter-spacing: 0.15em;
+    font-weight: 300;
+}
+
+/* Page wrapper subtle card
+============================================= */
+.page-wrapper {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    background: rgb(255 255 255 / 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+/* Headings
+============================================= */
+h2 {
+    font: normal 400 30px/1.5 "Playwrite NZ Guides", cursive;
+    margin-bottom: 20px;
+}
+
+h2::after {
+    content: " ✿";
+    font-size: 20px;
+    opacity: 0.6;
+}
+
+/* Footer glow-up
+============================================= */
+footer {
+    background: rgb(220 171 175 / 0.6);
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    border-top: 2px dashed rgb(255 255 255 / 0.4);
+}
+
+/* Subtle link color in body text
+============================================= */
+.about__contact a,
+.contact a {
+    color: rgb(190 130 140);
+}
+
+/* Nav spacing & letter spacing
+============================================= */
+nav > ul {
+    gap: 60px;
+    letter-spacing: 0.08em;
+    font-size: 14px;
+}
+nav > ul {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    list-style: none;
+    padding: 3px;
+    letter-spacing: 0.12em;
+    font-size: 20px; /* bumped up from 15px */
+}
+
+/* Doodle Box
+============================================= */
+.doodle {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.doodle__label {
+    font-size: 15px;
+    color: #aaa;
+    margin-bottom: 10px;
+    letter-spacing: 0.08em;
+}
+
+.doodle__canvas {
+    width: 100%;
+    height: 300px;
+    background: white;
+    border-radius: 16px;
+    border: 2px dashed rgb(200 170 175 / 0.6);
+    cursor: crosshair;
+    display: block;
+}
+
+.doodle__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.doodle__controls input[type="color"] {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+}
+
+.doodle__controls input[type="range"] {
+    accent-color: rgb(220 171 175);
+    width: 100px;
+}
+
+.doodle__controls button {
+    background: none;
+    border: 1px solid rgb(200 170 175 / 0.6);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #aaa;
+    transition: background 0.2s ease;
+    font-family: 'Saira', sans-serif;
+}
+
+.doodle__controls button:hover {
+    background: rgb(220 171 175 / 0.15);
+}
